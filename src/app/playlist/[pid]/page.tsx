@@ -1,23 +1,18 @@
 import { NextPage } from 'next';
-import { SpotifyApi } from '@spotify/web-api-ts-sdk';
 import Image from 'next/image';
 import Link from 'next/link';
 import ExportPlaylist from '@/components/ExportPlaylist';
+import Spotify from '@/helpers/spotifyApi';
 
 type PageProps = {
   params: Promise<{ pid: string }>;
 };
 
 const PlaylistTools: NextPage<PageProps> = async ({ params }) => {
-  const sdk = SpotifyApi.withClientCredentials(
-    process.env.VITE_SPOTIFY_CLIENT_ID ?? '',
-    process.env.VITE_SPOTIFY_CLIENT_SECRET ?? ''
-  );
-
   const playlistId = (await params).pid;
   if (!playlistId) return <>No Playlist</>;
 
-  const playlist = await sdk.playlists.getPlaylist(playlistId);
+  const playlist = await Spotify.playlists.getPlaylist(playlistId);
 
   return (
     <main className="min-h-screen bg-slate-900 p-4 text-white">
