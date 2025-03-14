@@ -28,7 +28,7 @@ const PlaylistTools: NextPage<PageProps> = async ({ params }) => {
         </Link>
         {playlist && (
           <div className="flex items-center justify-between">
-            <h2 className="text-3xl font-semibold">{playlist.name}</h2>
+            <h2 className="max-w-sm text-3xl font-semibold">{playlist.name}</h2>
             <ExportPlaylist playlist={playlist} />
           </div>
         )}

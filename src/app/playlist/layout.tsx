@@ -3,7 +3,7 @@ const Layout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  return <main className="mx-auto max-w-prose">{children}</main>;
+  return <main className="mx-auto max-w-screen-sm">{children}</main>;
 };
 
 export default Layout;
